@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Birthday Greetings</title>
+</head>
+    <body class="flex flex-col bg-main h-svh">
+        <div class="bg-main-dark w-full p-5 rounded-b-lg">
+            <div class="flex flex-col gap-2 text-main">
+
+                <div class="flex rounded justify-center p-4 shadow-xl">
+                    <span class="font-bold text-center  text-lg">Greetings!</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-4 pl-5 pr-5 mt-5 h-auto">
+            <div class="flex flex-col p-5 bg-main h-auto">
+                <span>Wala na HAHAHA</span>
+                <br>
+                <span>Happy Birthday Che! :3</span>
+                <span>Ginoo nay bahala nimo.</span>
+                <br>
+                <br>
+                <span>Sincerly mysterious entity tha you randomly encounter.</span>
+            </div>
+        </div>
+        
+        <div class="flex mt-auto justify-evenly mb-4">
+            <button id="back" class="w-20 bg-main-light hover:bg-blue-300 text-white font-bold py-2 px-4 rounded-full">
+                <span class="font-bold text-dark text-sm">Back</span>
+            </button>
+        </div>
+    </body>
+</html>
+
+<script>
+    var back = document.getElementById('back');
+    back.onclick = function(){
+        window.location.href = "home.html"
+    }
+</script>

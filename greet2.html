@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Birthday Greetings</title>
+</head>
+    <body class="flex flex-col bg-main h-svh">
+        <div class="bg-main-dark w-full p-5 rounded-b-lg">
+            <div class="flex flex-col gap-2 text-main">
+
+                <div class="flex rounded justify-center p-4 shadow-xl">
+                    <span class="font-bold text-center  text-lg">Greetings!</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-4 pl-10 pr-10 mt-5">
+            <div class="flex justify-center p-5 bg-main">
+                <video controls autoplay>
+                    <source src="asset/video/greet2.mp4">
+                </video>
+            </div>
+        </div>
+        
+        <div class="flex mt-auto justify-evenly mb-4">
+            <button id="back" class="w-20 bg-main-light hover:bg-blue-300 text-white font-bold py-2 px-4 rounded-full">
+                <span class="font-bold text-dark text-sm">Back</span>
+            </button>
+            <button id="next" class="w-20 bg-main-light hover:bg-blue-300 text-white font-bold py-2 px-4 rounded-full">
+                <span class="font-bold text-dark text-sm">Next</span>
+            </button>
+        </div>
+    </body>
+</html>
+
+<script>
+    var back = document.getElementById('back');
+    var next = document.getElementById('next');
+    back.onclick = function(){
+        window.location.href = "greet1.html"
+    }
+    next.onclick = function(){
+        window.location.href = 'greet3.html'
+    }
+</script>
