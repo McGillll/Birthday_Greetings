@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-shadow{
+    background-color: #476f95;
+}
+.bg-main-white{
+    background-color: #d1dbe4;
+}
+.bg-main-dark{
+    background-color: #194a7a;
+}
+
+.bg-main-light{
+    background-color: #7593af;
+}
+.bg-main{
+    background-color: #a3b7ca;
+}
+.text-main{
+    color: #d1dbe4;
+}
+
+.text-dark{
+    color: #194a7a;
+}
