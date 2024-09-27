@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Birthday Greetings</title>
+</head>
+    <body class="flex flex-col bg-main h-svh">
+        <audio id="autoplayAudio" autoplay loop>
+            <source src="asset/audio/Roy_Antonio-Pursue.mp3" type="audio/mpeg">
+        </audio>
+        <div class="bg-main-dark w-full p-5 rounded-b-lg">
+            <div class="flex flex-col gap-2 text-main">
+
+                <div class="flex rounded justify-center p-4 shadow-xl">
+                    <span class="font-bold text-center  text-lg">MemoryCard</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-4 pl-10 pr-10 mt-5">
+            <div class="flex justify-center p-5 bg-main-dark rounded-lg">
+                <img id="image" class="object-contain w-96 h-96">
+            </div>
+            <div class="w-full text-center">
+                <span id="msg" class="font-medium text-base">"cherry... sit"</span>
+            </div>
+        </div>
+        
+        <div class="flex mt-auto justify-evenly mb-4">
+            <button id="back" class="w-20 bg-main-light hover:bg-blue-300 text-white font-bold py-2 px-4 rounded-full">
+                <span class="font-bold text-dark text-sm">Back</span>
+            </button>
+            <button id="next" class="w-20 bg-main-light hover:bg-blue-300 text-white font-bold py-2 px-4 rounded-full">
+                <span class="font-bold text-dark text-sm">Next</span>
+            </button>
+        </div>
+    </body>
+</html>
+
+<script>
+    var audio = document.getElementById('autoplayAudio');
+    audio.play();
+    var back = document.getElementById('back');
+    var next = document.getElementById('next');
+    var image = document.getElementById('image');
+    var msg = document.getElementById('msg');   
+    var count = 1;
+    const pics = new Map([
+        [1, "asset/img/memory1.jpg"],
+        [2, "asset/img/memory2.jpg"],
+        [3, "asset/img/memory3.jpg"],
+        [4, "asset/img/memory4.jpg"],
+        [5, "asset/img/memory5.jpg"],
+        [6, "asset/img/memory6.jpg"],
+        [7, "asset/img/memory7.jpg"],
+        [8, "asset/img/memory8.jpg"],
+        [9, "asset/img/memory9.jpg"],
+        [10, "asset/img/memory10.jpg"],
+        [11, "asset/img/memory11.jpg"],
+        [12, "asset/img/memory12.jpg"],
+    ]);
+    const mess = new Map([
+        [1, '"cherry... sit"'],
+        [2, '"HAHAHA kyot"'],
+        [3, '"Kabulawan moment"'],
+        [4, '"pak... aura maam"'],
+        [5, '"manumbag ka day?"'],
+        [6, '"Slay kayka saimo dress. Speechless"'],
+        [7, '*Memory Card*'],
+        [8, '*Memory Card*'],
+        [9, '":P"'],
+        [10, '"kol imong anak, nalipong"'],
+        [11, '"Apilon nlng nko si Nemone para nashay tribute."'],
+        [12, '"First day"'],
+    ]);
+
+
+    var preloadImage = new Image();
+    preloadImage.src = pics.get(count);
+    preloadImage.onload = function() {
+        image.src = this.src;
+        msg.innerText = mess.get(count);
+    };
+    image.src = pics.get(count);
+
+    function changeimg(){
+        var preloadImage = new Image();
+        preloadImage.src = pics.get(count);
+        preloadImage.onload = function() {
+            image.src = this.src;
+        };
+        image.src = pics.get(count);
+        msg.innerText = mess.get(count);
+    }
+    
+
+    back.onclick = function(){
+        if(count === 1){
+            window.location.href = "home.html"
+        }else{
+            count--;
+            changeimg();
+        }
+    }
+    next.onclick = function(){
+        if(count < pics.size){
+            count++
+            changeimg()
+        }
+    }
+</script>

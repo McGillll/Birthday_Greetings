@@ -21,9 +21,11 @@
         <div class="w-3/4 flex mt-20">
             <div class="flex flex-col justify-evenly gap-10 w-full">
                 <div class="flex gap-4 flex-col items-center justify-center">
-                    <div class="flex items-center justify-center w-32 h-32 bg-main-white rounded-lg ">
-                        <img src="asset/img/memory.jpg" alt="" class="object-cover w-3/4 h-3/4">
-                    </div>
+                    <button id="memory">
+                        <div class="flex items-center justify-center w-32 h-32 bg-main-white rounded-lg ">
+                            <img src="asset/img/memory.jpg" alt="" class="object-cover w-3/4 h-3/4">
+                        </div>
+                    </button>
                     <span class="font-bold text-base text-dark">Memory Card</span>
                 </div>
                 <div class="flex gap-4 flex-col items-center justify-center">
@@ -44,9 +46,14 @@
 
 <script>
     var greet = document.getElementById('greet');
+    var memory = document.getElementById('memory');
     var audio = document.getElementById('autoplayAudio');
     audio.play();
     greet.onclick = function(){
         window.location.href = "greet1.html"
+    }
+
+    memory.onclick = function(){
+        window.location.href = "memory1.html"
     }
 </script>
