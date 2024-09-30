@@ -25,3 +25,43 @@
 .text-dark{
     color: #194a7a;
 }
+
+#image , #msg , #img-container{
+    transition: opacity 0.5s; /* add transition effects to opacity and transform */
+}
+
+#image.fade-out{
+    opacity: 0; /* set opacity to 0 when fading out */
+}
+
+#my-image.fade-in{
+    opacity: 1; /* set opacity to 1 when fading in */
+}
+
+#msg.fade-out {
+    opacity: 0; /* set opacity to 0 when fading out */
+}
+  
+#msg.fade-in {
+    opacity: 1; /* set opacity to 1 when fading in */
+}
+
+#img-container.fade-out {
+    opacity: 0; /* set opacity to 0 when fading out */
+}
+  
+#img-container.fade-in {
+    opacity: 1; /* set opacity to 1 when fading in */
+}
+
+#next[disabled]{
+    opacity: 0.5; /* make the button look disabled */
+    cursor: not-allowed; /* change the cursor to indicate the button is disabled */
+    pointer-events: none;
+}
+
+#back[disabled] {
+    opacity: 0.5; /* make the button look disabled */
+    cursor: not-allowed; /* change the cursor to indicate the button is disabled */
+    pointer-events: none;
+}

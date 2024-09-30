@@ -9,7 +9,7 @@
 </head>
     <body class="flex flex-col bg-main h-svh">
         <audio id="autoplayAudio" autoplay loop>
-            <source src="asset/audio/Roy_Antonio-Pursue.mp3" type="audio/mpeg">
+            <source src="asset/audio/Sping Snow - English ver.m4a" type="audio/mpeg">
         </audio>
         <div class="bg-main-dark w-full p-5 rounded-b-lg">
             <div class="flex flex-col gap-2 text-main">
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="flex flex-col gap-4 pl-10 pr-10 mt-5">
-            <div class="flex justify-center p-5 bg-main-dark rounded-lg">
+            <div id="img-container" class="flex justify-center p-5 bg-main-dark rounded-lg">
                 <img id="image" class="object-contain w-96 h-96">
             </div>
             <div class="w-full text-center">
@@ -45,22 +45,11 @@
     var back = document.getElementById('back');
     var next = document.getElementById('next');
     var image = document.getElementById('image');
-    var msg = document.getElementById('msg');   
+    var msg = document.getElementById('msg');  
+    var container = document.getElementById('img-container'); 
     var count = 1;
-    const pics = new Map([
-        [1, "asset/img/memory1.jpg"],
-        [2, "asset/img/memory2.jpg"],
-        [3, "asset/img/memory3.jpg"],
-        [4, "asset/img/memory4.jpg"],
-        [5, "asset/img/memory5.jpg"],
-        [6, "asset/img/memory6.jpg"],
-        [7, "asset/img/memory7.jpg"],
-        [8, "asset/img/memory8.jpg"],
-        [9, "asset/img/memory9.jpg"],
-        [10, "asset/img/memory10.jpg"],
-        [11, "asset/img/memory11.jpg"],
-        [12, "asset/img/memory12.jpg"],
-    ]);
+    const max_pic = 23;
+
     const mess = new Map([
         [1, '"cherry... sit"'],
         [2, '"HAHAHA kyot"'],
@@ -69,45 +58,136 @@
         [5, '"manumbag ka day?"'],
         [6, '"Slay kayka saimo dress. Speechless"'],
         [7, '*Memory Card*'],
-        [8, '*Memory Card*'],
+        [8, '*Memory Card* "HAHAHA rakag bata"'],
         [9, '":P"'],
         [10, '"kol imong anak, nalipong"'],
         [11, '"Apilon nlng nko si Nemone para nashay tribute."'],
         [12, '"First day"'],
+        [13, '"Brown daw shag mata guys"'],
+        [14, '"Okay class our lesson for today is eating"'],
+        [15, '"<3"'],
+        [16, '"Sheesh heckerman, kagorgeous ba sa heckerman"'],
+        [17, '"Plastic daw iyang smile dre guys"'],
+        [18, '"Wa nagsaba na gi truth or dare nadiay sha dre"'],
+        [19, '"Nawong sa wagidala dalang payong"'],
+        [20, '"Lowkey flexing nanamn sa kanyang BROWN eyes"'],
+        [21, '"ihhh"'],
+        [22, '*Memory Card*'],
+        [23, '"Maulaw ko sa beauty"'],
+    ]);
+
+    const last_mess = new Map([
+        [1, 'Wala na, nahan sad ka'],
+        [2, 'Joke lng'],
+        [3, '23 pics for your 23rd birthday.'],
     ]);
 
 
-    var preloadImage = new Image();
-    preloadImage.src = pics.get(count);
-    preloadImage.onload = function() {
-        image.src = this.src;
-        msg.innerText = mess.get(count);
-    };
-    image.src = pics.get(count);
+    changeimg();
 
     function changeimg(){
         var preloadImage = new Image();
-        preloadImage.src = pics.get(count);
+        preloadImage.src = "asset/img/memory"+count+".jpg";
         preloadImage.onload = function() {
             image.src = this.src;
         };
-        image.src = pics.get(count);
-        msg.innerText = mess.get(count);
-    }
+        image.src = "asset/img/memory"+count+".jpg";
     
+    }
+    function changeAnimation(){
+        image.classList.add('fade-out');
+            msg.classList.add('fade-out');
+            setTimeout(() => {
+                changeimg();
+                msg.textContent = mess.get(count);
+                image.classList.remove('fade-out');
+                image.classList.add('fade-in');
+                msg.classList.remove('fade-out');
+                msg.classList.add('fade-in');
+            }, 500);
+            setTimeout(() => {
+                image.classList.remove('fade-in');
+                msg.classList.remove('fade-in');
+        }, 1000);
+    }
 
     back.onclick = function(){
         if(count === 1){
             window.location.href = "home.html"
-        }else{
+        }
+        else if(count === 24){
+            msg.classList.add('fade-out');
+            container.classList.add('fade-out');
+            setTimeout(() => {
+                container.appendChild(image);
+                changeimg();
+                msg.textContent = mess.get(count);
+                msg.classList.remove('fade-out');
+                image.classList.remove('fade-out');
+                container.classList.remove('fade-out');
+                image.classList.add('fade-in');
+                msg.classList.add('fade-in');
+                container.classList.add('fade-in');
+            }, 500);
+            setTimeout(() => {
+                image.classList.remove('fade-in');
+                msg.classList.remove('fade-in');
+                container.classList.remove('fade-in');
+            }, 1000);
             count--;
-            changeimg();
+        }
+        else{
+            changeAnimation();
+            count--;
         }
     }
     next.onclick = function(){
-        if(count < pics.size){
+        if(count < max_pic){
+            changeAnimation();
             count++
-            changeimg()
+        }
+        else if(count === max_pic){
+            next.setAttribute('disabled', 'disabled');
+            back.setAttribute('disabled', 'disabled');
+            msg.classList.add('fade-out');
+            container.classList.add('fade-out');
+            setTimeout(() => {
+                msg.textContent = last_mess.get(3);
+                image.remove();
+                msg.classList.remove('fade-out');
+                container.classList.remove('fade-out')
+                msg.classList.add('fade-in');
+                container.classList.add('fade-in');
+            }, 500);
+            setTimeout(() => {
+                msg.classList.add('fade-out');
+                setTimeout(() => {
+                    msg.classList.remove('fade-out');
+                    msg.textContent = 'Thank you for existing.';
+                    msg.classList.add('fade-in');
+                }, 500);
+                next.removeAttribute('disabled');
+                back.removeAttribute('disabled');
+            }, 3000);
+            count++;
+        }
+        else{
+            count = 1;
+            msg.classList.add('fade-out');
+            setTimeout(() => {
+                container.appendChild(image);
+                changeimg();
+                msg.textContent = mess.get(count);
+                image.classList.add('fade-in');
+                msg.classList.remove('fade-out');
+                msg.classList.add('fade-in');
+                container.classList.add('fade-in');
+            }, 500);
+            setTimeout(() => {
+                image.classList.remove('fade-in');
+                msg.classList.remove('fade-in');
+                container.classList.remove('fade-in');
+            }, 1000);
         }
     }
 </script>
